@@ -7,6 +7,12 @@ class Category extends Model {}
 Category.init(
   {
     // define columns
+
+    //ID Column
+
+    //Category_name column
+
+    
   },
   {
     sequelize,
