@@ -13,17 +13,17 @@ router.get('/', (req, res) => {
       model: Category,
       attributes: ['id', 'category_name']
     },
-  {
-    model: Tag,
-    attributes: ['id', 'tag_name']
-  }]
+    {
+      model: Tag,
+      attributes: ['id', 'tag_name']
+    }]
   })
-  .then(productData => 
-    res.json(productData))
-.catch(err => {
-  console.log(err);
-  res.status(500).json(err);
-});
+    .then(productData =>
+      res.json(productData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get one product
@@ -45,17 +45,17 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-  .then(productData => {
-    if(!productData){
-      res.status(404).json('No product found with this ID!');
-      return;
-    }
-    res.json(productData)
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(productData => {
+      if (!productData) {
+        res.status(404).json('No product found with this ID!');
+        return;
+      }
+      res.json(productData)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // create new product
@@ -132,8 +132,27 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//WORKING BUT THROWS 400 ERROR? ASK IN OFFICE HOURS-----------------
+
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
+  Product.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(productData => {
+      if (!productData) {
+        res.status(404).json("No product found with this ID!");
+      }
+      res.json(productData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
+
+//CANNOT DELETE OR UPDATE A PARENT ROW?-------------- ASK IN OFFICE HOURS
 
 module.exports = router;
