@@ -1,4 +1,4 @@
--- Active: 1665083799973@@127.0.0.1@3306@library_db
+-- Active: 1664493076393@@127.0.0.1@3306@books_db
 -- DROP DATABASE
 DROP DATABASE IF EXISTS ecommerce_db;
 
