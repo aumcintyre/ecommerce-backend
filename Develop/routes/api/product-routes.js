@@ -90,6 +90,7 @@ router.post('/', (req, res) => {
     });
 });
 
+
 // update product
 router.put('/:id', (req, res) => {
   // update product data
